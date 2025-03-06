@@ -1,0 +1,40 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Carregar o arquivo CSV
+file_path = 'Unidades_Basicas_Saude-UBS.csv'
+data = pd.read_csv(file_path, sep=';', encoding='utf-8')
+
+# Exibir as primeiras linhas do DataFrame
+print(data.head())
+
+# Análise e Gráficos
+
+# 1. Gráfico de Distribuição de Sintomas por Município
+def plot_symptoms_by_municipality(data):
+    plt.figure(figsize=(12, 6))
+    sns.countplot(data=data, x='Municípios', hue='Sintomas')
+    plt.title('Distribuição de Sintomas por Município')
+    plt.xticks(rotation=45)
+    plt.xlabel('Municípios')
+    plt.ylabel('Contagem de Sintomas')
+    plt.legend(title='Sintomas')
+    plt.tight_layout()
+    plt.show()
+
+# 2. Gráfico de Idade/Sexo
+def plot_age_sex_distribution(data):
+    plt.figure(figsize=(12, 6))
+    sns.countplot(data=data, x='Idade/Sexo')
+    plt.title('Distribuição de Idade/Sexo')
+    plt.xticks(rotation=45)
+    plt.xlabel('Idade/Sexo')
+    plt.ylabel('Contagem')
+    plt.tight_layout()
+    plt.show()
+
+# Executar as funções de plotagem
+plot_symptoms_by_municipality(data)
+plot_age_sex_distribution(data)
+
